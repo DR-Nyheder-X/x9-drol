@@ -23,7 +23,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract("css?minimize!less")
       },
       {
-        test: /\.(svg|png|gif|woff|woff2|eot|ttf)(\?.*)?$/, 
+        test: /\.(svg|png|gif|jpg|woff|woff2|eot|ttf)(\?.*)?$/, 
         loader: "file-loader?name=[name].[ext]"
       },
       { 

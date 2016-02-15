@@ -4,12 +4,8 @@
   "description": "",
   "scripts": {
     "clean": "rm -rf dist/*",
-    "build": "npm run clean && npm run build:f7 && npm run build:js",
-    "build:dev": "npm run clean && npm run build:f7 && npm run build:js-watch",
-    "build:f7": "cp -R external/* dist/",
-    "build:css": "lessc src/less/styles.less dist/styles.css",
-    "build:js": "babel --presets es2015 src/js/index.js -o dist/index.js",
-    "build:js-watch": "babel --presets es2015 src/js/index.js -o dist/index.js --watch"
+    "build": "npm run clean && webpack",
+    "build:dev": "npm run clean && webpack --watch"
   },
   "dependencies": {
     "babel-cli": "6.3.17",
