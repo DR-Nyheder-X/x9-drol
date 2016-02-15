@@ -1,15 +1,14 @@
 <div class="athlete-feed-entry athlete-feed-entry--{{type}} {{#if breaking}}athlete-feed-entry--breaking{{/if}}">
-	{{>athleteFeedEntryHeader target}}
 	<div class="athlete-feed-entry__content">
 		<div class="athlete-feed-entry__source">
-			<span>{{formatSocialAuthor data.author}} på </span>
-			<h4 class="athlete-profile-social-label athlete-profile-social-label--{{type}}">Twitter</h4>
+			<span>Resultat fra </span>
+			<h4 class="athlete-profile-social-label athlete-profile-social-label--{{type}}">DR Sporten</h4>
 		</div>
-		<p>{{{formatSocialContent data.content}}}</p>
+		<p><span class="athlete-small-portrait"><img src="{{target.portrait}}"></span>{{{data.content}}}</p>
 		{{#if data.image}}
 			<p class="athlete-feed-entry__content-image">
 				<img src="{{data.image}}">
-				<a href="#" class="button">Se på Twitter</a>
+				<a href="#" class="button">Læs på dr.dk</a>
 			</p>
 		{{/if}}
 		{{#if unread}}

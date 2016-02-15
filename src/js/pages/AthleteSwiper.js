@@ -1,4 +1,4 @@
-/* global Framework7 Dom7 */
+/* global Dom7 */
 
 const data = require("../data.js");
 const Page = require("./Page.js");

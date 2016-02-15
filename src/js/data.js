@@ -22,6 +22,7 @@ function getAthleteData(callback) {
 				firstName: e.gsx$name.$t.split(" ")[0],
 				description: e.gsx$description.$t,
 				role: e.gsx$role.$t,
+				roleShort: e.gsx$roleshort.$t,
 				likes: e.gsx$likes.$t,
 				portrait: e.gsx$portrait.$t,
 				gallery: e.gsx$gallery.$t.split("\n").filter(url => url.trim() !== "").map(url => ({
@@ -99,35 +100,29 @@ function getFeedData(callback) {
 			const entry = {
 				id: index,
 				type: e.gsx$type.$t,
+				mediaType: e.gsx$mediatype.$t,
 				athlete: parseInt(e.gsx$athlete.$t, 10),
 				time: e.gsx$time.$t,
-				isNew: e.gsx$new.$t === "x",
+				live: e.gsx$live.$t === "x",
 				breaking: e.gsx$breaking.$t === "x",
 				data: {
 					content: e.gsx$content.$t,
-					event: e.gsx$event.$t
+					author: e.gsx$author.$t,
+					event: e.gsx$event.$t,
+					image: e.gsx$image.$t || null
 				},
 				buttons: {
 					dr1: e.gsx$buttondr1.$t === "x",
 					p3: e.gsx$buttonp3.$t === "x",
-					scribble: e.gsx$buttonscribble.$t === "x",
+					scribble: e.gsx$buttonscribble.$t === "x"
 				}
 
 			};
 			return entry;
 		});
 		data.feed = {
-			entries: entries.filter(e => !e.isNew)
+			entries: entries
 		};
-
-		const waiting = entries.filter(e => e.isNew);
-
-		setTimeout(() => {
-			waiting.forEach(e => {
-				data.feed.entries.push(e);
-			});
-			waiting.length = 0;
-		}, 10000);
 
 		callback();
 	});
@@ -138,7 +133,7 @@ function getData(callback) {
 		getFeedData(() => {
 			callback();
 		});
-	})
+	});
 }
 
 module.exports = data;

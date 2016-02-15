@@ -1,15 +1,17 @@
-/* global Dom7 twttr FB */
+/* global Dom7 */
 
 const data = require("../data.js");
 const Page = require("./Page.js");
 const $ = Dom7;
 const feedTemplates = {
 	drartikel: require("../../hbs/partials/athleteFeedDRArtikel.hbs"),
+	btartikel: require("../../hbs/partials/athleteFeedBTArtikel.hbs"),
+	archive: require("../../hbs/partials/athleteFeedArchive.hbs"),
 	twitter: require("../../hbs/partials/athleteFeedTwitter.hbs"),
 	facebook: require("../../hbs/partials/athleteFeedFacebook.hbs"),
-	event: require("../../hbs/partials/athleteFeedEvent.hbs")
+	event: require("../../hbs/partials/athleteFeedEvent.hbs"),
+	result: require("../../hbs/partials/athleteFeedResultat.hbs")
 };
-
 
 class AthleteFeed extends Page {
 
@@ -21,7 +23,7 @@ class AthleteFeed extends Page {
 		function updateFeedBadge() {
 			const numNew = data.feed.entries.filter(e => !data.user.feed.entries[e.id]).length;
 			if (numNew > 0) {
-				$(".navbar-link-athlete-feed .badge").html(numNew).show();
+				$(".navbar-link-athlete-feed .badge").show();
 			} else {
 				$(".navbar-link-athlete-feed .badge").hide();
 			}
@@ -57,6 +59,7 @@ class AthleteFeed extends Page {
 			this._latestEntry = entry.id;
 			if (entry.type in feedTemplates) {
 				entry.target = data.athletes.find(a => a.id === entry.athlete);
+				entry.data.author = entry.data.author || entry.target.name;
 				feedContainer.prepend(
 					feedTemplates[entry.type](entry)
 				);

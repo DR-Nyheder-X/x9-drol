@@ -17,8 +17,8 @@ function init(app, callback) {
 		"bgcolor": "#fff",
 		"fontcolor": "#000",
 		"closeButton": false,
-		pagination: false,
-		onClosed: callback
+		"pagination": false,
+		"onClosed": callback
 	});
 	$(".welcomescreen-container .close-btn").on("click", e => {
 		intro.close();
@@ -29,8 +29,6 @@ function init(app, callback) {
 	$(".welcomescreen-container #slide1").on("click", e => {
 		intro.close();
 	});
-
-	
 
 }
 

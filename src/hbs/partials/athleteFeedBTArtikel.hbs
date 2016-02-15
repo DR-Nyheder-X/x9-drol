@@ -2,15 +2,16 @@
 	{{>athleteFeedEntryHeader target}}
 	<div class="athlete-feed-entry__content">
 		<div class="athlete-feed-entry__source">
-			<span>{{formatSocialAuthor data.author}} på </span>
-			<h4 class="athlete-profile-social-label athlete-profile-social-label--{{type}}">Twitter</h4>
+			<span>Artikel om {{target.firstName}} fra </span>
+			<h4 class="athlete-profile-social-label athlete-profile-social-label--{{type}}">BT</h4>
 		</div>
-		<p>{{{formatSocialContent data.content}}}</p>
+		<p>{{{data.content}}}</p>
 		{{#if data.image}}
 			<p class="athlete-feed-entry__content-image">
 				<img src="{{data.image}}">
-				<a href="#" class="button">Se på Twitter</a>
 			</p>
+		{{else}}
+			<p><a href="#" class="button">Læs på bt.dk</a></p>
 		{{/if}}
 		{{#if unread}}
 			<div class="athlete-feed-entry__new-indicator"></div>

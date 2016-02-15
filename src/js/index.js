@@ -45,13 +45,13 @@ data.init(() => {
 		mainView.router.loadPage("/pages/athlete-swiper.html");
 	});
 
-	intro.init(app, () => {
+	// intro.init(app, () => {
 		$(".navbar").show();
 		mainView.router.loadPage({
 			url: "/pages/athlete-swiper.html",
 			animatePages: false,
 			reload: true
 		});
-	});
-})
+	// });
+});
 
