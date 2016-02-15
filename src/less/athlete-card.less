@@ -1,0 +1,41 @@
+
+
+.athlete-card {
+	.rounded-card-box();
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 90%;
+	padding: 18px;
+	transition: transform 0.2s, opacity 0.3s;
+	opacity: 0;
+
+	&--active {
+		opacity: 1;
+	}
+	&--swiping {
+		transition: none;
+	}
+	&--swipe-left {
+		transform: translate3d(-150%, 0, 0) rotate(-10deg);
+	}
+	&--swipe-right {
+		transform: translate3d(150%, 0, 0) rotate(10deg);
+	}
+
+	&__portrait {
+		border-radius: 4px;
+
+		width: 100%;
+	}
+	&__name {
+		font-size: 14px;
+		margin-bottom: 0;
+		margin-top: 5px;
+	}
+	&__role {
+		font-size: 12px;
+		margin-bottom: 10px;
+		margin-top: 0;
+	}
+}

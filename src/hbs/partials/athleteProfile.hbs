@@ -1,0 +1,50 @@
+<div class="athlete-profile">
+	<div class="swiper-container athlete-gallery athlete-profile-swiper">
+		<div class="swiper-wrapper">
+			{{#each gallery}}
+				<div class="swiper-slide"><div class="athlete-gallery-image"><img src="{{url}}"></div></div>
+			{{/each}}
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+
+	{{#each meters}}
+		{{>athleteMeter}}
+	{{/each}}
+	<h2 class="name">{{name}}</h2>
+	<h3 class="role">{{role}}</h3>
+
+	<div class="athlete-profile-block">
+		<div class="description">{{description}}</div>
+	</div>
+
+	<div class="athlete-profile-block">
+		<div class="swiper-container athlete-instagram athlete-profile-swiper">
+			<div class="swiper-wrapper">
+				{{#each instagram}}
+					<div class="swiper-slide">{{>athleteProfileInstagram}}</div>
+				{{/each}}
+			</div>
+			<div class="swiper-pagination"></div>
+			<h4 class="athlete-profile-social-label athlete-profile-social-label--instagram">Instagram</h4>
+		</div>
+	</div>
+
+	<div class="athlete-profile-block">
+		<div class="swiper-container athlete-twitter athlete-profile-swiper">
+			<div class="swiper-wrapper">
+				{{#each tweets}}
+					<div class="swiper-slide">{{>athleteProfileTweet}}</div>
+				{{/each}}
+			</div>
+			<div class="swiper-pagination"></div>
+			<h4 class="athlete-profile-social-label athlete-profile-social-label--twitter">Twitter</h4>
+		</div>
+	</div>
+
+	<div class="athlete-profile-block">
+		{{>athleteProfileFacebook latestFacebookPost}}
+		<h4 class="athlete-profile-social-label athlete-profile-social-label--facebook">Facebook</h4>
+	</div>
+
+</div>

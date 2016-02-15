@@ -1,0 +1,41 @@
+@import (css) "../../external/framework7/css/framework7.ios.min.css";
+@import (css) "../../external/framework7/css/framework7.ios.colors.min.css";
+@import (css) "../../external/welcomescreen/welcomescreen.css";
+@import "../../external/ionicons/css/ionicons.css";
+
+@import "variables.less";
+@import "mixins.less";
+
+
+* {
+	box-sizing: border-box;
+}
+
+.page-content {
+	background: #efefef;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.toolbar {
+	height: 70px;
+	background-color: #efefef;
+}
+
+.loading-screen-preloader {
+	width: 42px;
+	height: 42px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -21px;
+	margin-top: -21px;
+}
+
+@import "navbar.less";
+@import "intro.less";
+
+@import "athlete-meter.less";
+@import "athlete-swiper.less";
+@import "athlete-profile.less";
+@import "athlete-feed.less";

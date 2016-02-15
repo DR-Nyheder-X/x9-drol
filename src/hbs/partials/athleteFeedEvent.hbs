@@ -1,0 +1,15 @@
+<div class="athlete-feed-entry athlete-feed-entry--event {{#if breaking}}athlete-feed-entry--breaking{{/if}}">
+	{{>athleteFeedEntryHeader target}}
+	<div class="athlete-feed-entry__content">
+		<div class="athlete-feed-entry__source"><span>{{data.event}}</span></div>
+		<p>{{{data.content}}}</p>
+		{{#if isNew}}
+			<div class="athlete-feed-entry__new-indicator"></div>
+		{{/if}}
+		<div class="athlete-feed-entry__time athlete-feed-entry__time--live">
+			{{time}}
+		</div>
+		{{>athleteFeedButtons .}}
+	</div>
+
+</div>

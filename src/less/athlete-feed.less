@@ -1,0 +1,155 @@
+.feed-container {
+	margin: 20px;
+}
+
+.athlete-small-portrait {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+}
+
+.athlete-feed-entry-buttons {
+	padding: 0 10px;
+	overflow: auto;
+}
+
+.athlete-feed-button {
+	float: left;
+	display: block;
+	background-color: white;
+	border: 1px solid black;
+	color: black;
+	font-weight: bold;
+	font-size: 10px;
+	text-transform: uppercase;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.athlete-feed-logo {
+	display: inline-block;
+	position: relative;
+	&--dr1 {
+		width: 53px;
+		height: 13px;
+		background-image: url("../img/logo-dr1.png");
+		top: 2px;
+	}
+	&--p3 {
+		width: 60px;
+		height: 13px;
+		background-image: url("../img/logo-p3.png");
+		top: 2px;
+	}
+	&--scribble {
+		width: 17px;
+		height: 17px;
+		background-image: url("../img/logo-scribble.png");
+		top: 4px;
+	}
+}
+
+
+.athlete-feed-entry {
+	position: relative;
+	margin-bottom: 20px;
+
+	&__header {
+		height: 30px;
+		.athlete-small-portrait {
+			float: left;
+			margin-left: 2px;
+		}
+		b, i {
+			float: left;
+			line-height: 30px;
+			margin-left: 6px;
+		}
+		b {
+			color: @link-color;
+		}
+		i {
+			font-weight: bold;
+			color: #888;
+			text-transform: lowercase;
+		}
+	}
+
+	&__content {
+		position: relative;
+		margin-top: 10px;
+		.rounded-card-box();
+		.speech-bubble-upper-left();
+		p {
+			margin: 10px;
+		}
+	}
+	&__source {
+		padding: 10px;
+		padding-bottom: 0;
+		> span {
+			display: inline-block;
+			font-size: 12px;
+			font-weight: bold;
+		}
+		.athlete-profile-social-label {
+			display: inline-block;
+			position: relative;
+			margin-left: 6px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	&__new-indicator {
+		position: absolute;
+		top: 4px;
+		right: 4px;
+		width: 6px;
+		height: 6px;
+		background-color: red;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	&__time {
+		position: absolute;
+		top: 12px;
+		right: 12px;
+		font-size: 10px;
+		color: #888;
+		&--live {
+			color: red;
+			border: 1px solid red;
+			padding-left: 4px;
+			padding-right: 4px;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+	}
+
+	&--breaking {
+		.athlete-feed-entry__content {
+			background-color: @color-breaking;
+			&:before {
+				background-color: @color-breaking;
+			}
+			p {
+				font-size: 120%;
+				font-weight: bold;
+			}
+		}
+	}
+
+	&--drartikel {
+		.athlete-feed-entry__source {
+			color: @color-drartikel;
+		}
+	}
+}
+

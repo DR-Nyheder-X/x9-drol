@@ -1,0 +1,8 @@
+<div class="athlete-card">
+	<img class="athlete-card__portrait" src="{{portrait}}">
+	<h2 class="athlete-card__name">{{name}}</h2>
+	<h3 class="athlete-card__role">{{role}}</h3>
+	{{#each meters}}
+		{{>athleteMeter .}}
+	{{/each}}
+</div>
