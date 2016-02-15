@@ -4,7 +4,12 @@ const $ = Dom7;
 const DATA_URL_ATHLETES = "https://spreadsheets.google.com/feeds/list/1Z0G_Cf7zbRkeSoEMixr7qoYOrqQL48tIK19sDIF5Gy4/1/public/values?alt=json";
 const DATA_URL_FEED = "https://spreadsheets.google.com/feeds/list/1Z0G_Cf7zbRkeSoEMixr7qoYOrqQL48tIK19sDIF5Gy4/2/public/values?alt=json";
 const data = {
-	init: getData
+	init: getData,
+	user: {
+		feed: {
+			entries: {}
+		}
+	}
 };
 
 function getAthleteData(callback) {
@@ -89,8 +94,10 @@ function getAthleteData(callback) {
 function getFeedData(callback) {
 	$.get(DATA_URL_FEED, (json) => {
 		const obj = JSON.parse(json);
-		const entries = obj.feed.entry.map(e => {
+
+		const entries = obj.feed.entry.map((e, index) => {
 			const entry = {
+				id: index,
 				type: e.gsx$type.$t,
 				athlete: parseInt(e.gsx$athlete.$t, 10),
 				time: e.gsx$time.$t,
@@ -110,9 +117,18 @@ function getFeedData(callback) {
 			return entry;
 		});
 		data.feed = {
-			entries: entries,
-			waiting: []
+			entries: entries.filter(e => !e.isNew)
 		};
+
+		const waiting = entries.filter(e => e.isNew);
+
+		setTimeout(() => {
+			waiting.forEach(e => {
+				data.feed.entries.push(e);
+			});
+			waiting.length = 0;
+		}, 10000);
+
 		callback();
 	});
 }

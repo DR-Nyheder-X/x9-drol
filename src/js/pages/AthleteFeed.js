@@ -16,23 +16,22 @@ class AthleteFeed extends Page {
 	constructor(app, view) {
 		super(app, view);
 		this._firstLoad = true;
+		this._latestEntry = -1;
+
+		function updateFeedBadge() {
+			const numNew = data.feed.entries.filter(e => !data.user.feed.entries[e.id]).length;
+			if (numNew > 0) {
+				$(".navbar-link-athlete-feed .badge").html(numNew).show();
+			} else {
+				$(".navbar-link-athlete-feed .badge").hide();
+			}
+
+		}
+		setInterval(updateFeedBadge.bind(this), 100);
 	}
 
 	load(container, query) {
 		this._container = container;
-
-		if (this._firstLoad) {
-			const waiting = data.feed.waiting;
-			data.feed.waiting = [];
-			setTimeout(() => {
-				data.feed.waiting = waiting;
-			}, 5000);
-		} else {
-			data.feed.waiting.forEach(e => {
-				data.feed.entries.push(e);
-			});
-			data.feed.waiting.length = 0;
-		}
 
 		this.loadInitialEntries(this.addEntries.bind(this));
 
@@ -46,22 +45,16 @@ class AthleteFeed extends Page {
 			});
 		});
 
-		function updateFeedBadge() {
-			if (data.feed.waiting.length > 0) {
-				$(".navbar-link-athlete-feed .badge").html(data.feed.waiting.length).show();
-			} else {
-				$(".navbar-link-athlete-feed .badge").hide();
-			}
-
-		}
-		setInterval(updateFeedBadge, 100);
 		this._firstLoad = false;
 	}
 
-	addEntries(entries) {
+	addEntries(entries, isNew) {
 		const feedContainer = $(".feed-container", this._container);
 
 		entries.forEach(entry => {
+			entry.unread = !data.user.feed.entries[entry.id];
+			data.user.feed.entries[entry.id] = true;
+			this._latestEntry = entry.id;
 			if (entry.type in feedTemplates) {
 				entry.target = data.athletes.find(a => a.id === entry.athlete);
 				feedContainer.prepend(
@@ -70,9 +63,6 @@ class AthleteFeed extends Page {
 			}
 		});
 		
-
-		twttr.widgets.load();
-		FB.XFBML.parse();
 	}
 
 	loadInitialEntries(callback) {
@@ -83,8 +73,9 @@ class AthleteFeed extends Page {
 
 	loadNewEntries(callback) {
 		setTimeout(() => {
-			callback(data.feed.waiting);
-			data.feed.waiting.length = 0;
+			callback(
+				data.feed.entries.filter(e => e.id > this._latestEntry)
+			);
 		}, 1000);
 	}
 

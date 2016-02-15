@@ -18,32 +18,36 @@ var pageControllers = {
 	"athlete-swiper": require("./pages/AthleteSwiper.js")
 };
 
-Object.keys(pageControllers).forEach(page => {
-	pageControllers[page] = new pageControllers[page](app, mainView);
-});
-
-$(document).on("pageBeforeInit", e => {
-	let page = e.detail.page;
-	if (page.name in pageControllers) {
-		let controller = pageControllers[page.name];
-		controller.load(page.container, page.query);
-	}
-});
-
-$(".list-panel-athlete-list").on("click", e => {
-	mainView.router.loadPage("/pages/athlete-list.html");
-});
-
-$(".navbar-link-athlete-feed").on("click", e => {
-	mainView.router.loadPage("/pages/athlete-feed.html");
-});
-
-$(".navbar-link-athlete-swiper").on("click", e => {
-	mainView.router.loadPage("/pages/athlete-swiper.html");
-});
 
 data.init(() => {
+
+	Object.keys(pageControllers).forEach(page => {
+		pageControllers[page] = new pageControllers[page](app, mainView);
+	});
+
+	$(document).on("pageBeforeInit", e => {
+		let page = e.detail.page;
+		if (page.name in pageControllers) {
+			let controller = pageControllers[page.name];
+			controller.load(page.container, page.query);
+		}
+	});
+
+	$(".list-panel-athlete-list").on("click", e => {
+		mainView.router.loadPage("/pages/athlete-list.html");
+	});
+
+	$(".navbar-link-athlete-feed").on("click", e => {
+		mainView.router.loadPage("/pages/athlete-feed.html");
+	});
+
+	$(".navbar-link-athlete-swiper").on("click", e => {
+		mainView.router.loadPage("/pages/athlete-swiper.html");
+	});
+
+
 	$(".navbar").show();
+
 	mainView.router.loadPage({
 		url: "/pages/athlete-swiper.html",
 		animatePages: false,

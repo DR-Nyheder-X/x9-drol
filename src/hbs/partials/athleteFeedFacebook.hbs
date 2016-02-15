@@ -3,7 +3,7 @@
 	<div class="athlete-feed-entry__content">
 		<div class="athlete-feed-entry__source"><span>{{target.firstName}} på </span><h4 class="athlete-profile-social-label athlete-profile-social-label--facebook">Facebook</h4></div>
 		<p>{{{data.content}}}</p>
-		{{#if isNew}}
+		{{#if unread}}
 			<div class="athlete-feed-entry__new-indicator"></div>
 		{{/if}}
 		<div class="athlete-feed-entry__time">
