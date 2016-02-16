@@ -5,7 +5,7 @@
 			<span>Artikel om {{target.firstName}} fra </span>
 			<h4 class="athlete-profile-social-label athlete-profile-social-label--{{type}}">DR Sporten</h4>
 		</div>
-		<p>{{{data.content}}}</p>
+		<p>{{{formatSocialContent data.content}}}</p>
 		{{#if data.image}}
 			<p class="athlete-feed-entry__content-image">
 				<img src="{{data.image}}">

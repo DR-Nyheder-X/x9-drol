@@ -24,9 +24,11 @@ function getAthleteData(callback) {
 				role: e.gsx$role.$t,
 				roleShort: e.gsx$roleshort.$t,
 				age: e.gsx$age.$t,
-				likes: e.gsx$likes.$t,
 				portrait: e.gsx$portrait.$t,
 				gallery: e.gsx$gallery.$t.split("\n").filter(url => url.trim() !== "").map(url => ({
+					url: url
+				})),
+				instagram: e.gsx$instagram.$t.split("\n").filter(url => url.trim() !== "").map(url => ({
 					url: url
 				})),
 				meters: [
@@ -43,7 +45,7 @@ function getAthleteData(callback) {
 						label: e.gsx$metertext3.$t
 					}
 				],
-				tweets: [
+				tweets: e.gsx$tweet1.$t ? [
 					{
 						content: e.gsx$tweet1.$t,
 						author: e.gsx$tweetauthor1.$t
@@ -56,32 +58,7 @@ function getAthleteData(callback) {
 						content: e.gsx$tweet3.$t,
 						author: e.gsx$tweetauthor3.$t
 					}
-				],
-				instagram: [
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" },
-					{ url: "https://scontent-arn2-1.cdninstagram.com/t51.2885-15/s640x640/e15/12568968_1717807815104881_1126366706_n.jpg?ig_cache_key=MTE4MDU4OTA1MTY3NDUwNzg4OQ%3D%3D.2" }
-				],
+				] : null,
 				latestFacebookPost: {
 					content: e.gsx$facebookpost.$t
 				}

@@ -2,7 +2,7 @@
 	{{>athleteFeedEntryHeader target}}
 	<div class="athlete-feed-entry__content">
 		<div class="athlete-feed-entry__source"><span>{{data.event}}</span></div>
-		<p>{{{data.content}}}</p>
+		<p>{{{formatSocialContent data.content}}}</p>
 		{{#if unread}}
 			<div class="athlete-feed-entry__new-indicator"></div>
 		{{/if}}

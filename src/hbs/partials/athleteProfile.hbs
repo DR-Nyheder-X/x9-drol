@@ -2,7 +2,7 @@
 	<div class="swiper-container athlete-gallery athlete-profile-swiper">
 		<div class="swiper-wrapper">
 			{{#each gallery}}
-				<div class="swiper-slide"><div class="athlete-gallery-image"><img src="{{url}}"></div></div>
+				<div class="swiper-slide"><div class="athlete-gallery-image"><img src="/images/profiles/{{url}}"></div></div>
 			{{/each}}
 		</div>
 		<div class="swiper-pagination"></div>
@@ -12,7 +12,7 @@
 		{{>athleteMeter}}
 	{{/each}}
 	<h2 class="name">{{name}}</h2>
-	<h3 class="role">{{role}}</h3>
+	<h3 class="role">{{role}}, {{age}} år</h3>
 
 	<div class="athlete-profile-block">
 		<div class="description">{{description}}</div>
@@ -30,17 +30,21 @@
 		</div>
 	</div>
 
+	{{#if tweets}}
 	<div class="athlete-profile-block">
 		<div class="swiper-container athlete-twitter athlete-profile-swiper">
 			<div class="swiper-wrapper">
 				{{#each tweets}}
-					<div class="swiper-slide">{{>athleteProfileTweet}}</div>
+					{{#if content}}
+						<div class="swiper-slide">{{>athleteProfileTweet}}</div>
+					{{/if}}
 				{{/each}}
 			</div>
 			<div class="swiper-pagination"></div>
 			<h4 class="athlete-profile-social-label athlete-profile-social-label--twitter">Twitter</h4>
 		</div>
 	</div>
+	{{/if}}
 
 	<div class="athlete-profile-block">
 		{{>athleteProfileFacebook latestFacebookPost}}
