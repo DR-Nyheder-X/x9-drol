@@ -23,6 +23,7 @@ function getAthleteData(callback) {
 				description: e.gsx$description.$t,
 				role: e.gsx$role.$t,
 				roleShort: e.gsx$roleshort.$t,
+				age: e.gsx$age.$t,
 				likes: e.gsx$likes.$t,
 				portrait: e.gsx$portrait.$t,
 				gallery: e.gsx$gallery.$t.split("\n").filter(url => url.trim() !== "").map(url => ({

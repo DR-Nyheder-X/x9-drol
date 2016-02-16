@@ -1,5 +1,4 @@
 /* global Framework7 Dom7 */
-
 require("./libs.js");
 require("../less/styles.less");
 
@@ -26,6 +25,7 @@ data.init(() => {
 	});
 
 	$(document).on("pageBeforeInit", e => {
+		$(".navbar .navbar-icon").removeClass("navbar-icon--active");
 		let page = e.detail.page;
 		if (page.name in pageControllers) {
 			let controller = pageControllers[page.name];

@@ -8,10 +8,11 @@ const $ = Dom7;
 class AthleteProfile extends Page {
 
 	load(container, query) {
+		$(".navbar-link-athlete-swiper .navbar-icon").addClass("navbar-icon--active");
 
 		const id = parseInt(query.id, 10);
 		this._container = container;
-		this._athlete = data.athletes.find(a => a.id === id);
+		this._athlete = data.athletes.filter(a => a.id === id)[0];
 
 		const profileTemplate = require("../../hbs/partials/athleteProfile.hbs");
 
@@ -38,9 +39,6 @@ class AthleteProfile extends Page {
 			pagination: $(".athlete-twitter .swiper-pagination", this._container),
 			spaceBetween: 10
 		});
-
-		twttr.widgets.load();
-		FB.XFBML.parse();
 	}
 
 }

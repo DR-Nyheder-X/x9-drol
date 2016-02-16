@@ -3,21 +3,30 @@
 	background-color: white;
 	margin-bottom: 4px;
 	position: relative;
-	border-radius: 4px;
+	border-radius: 10px;
 	background-color: #efefef;
 	box-shadow: inset -1px 1px 1px 0px rgba(0,0,0,0.2);
+	font-family: "AmsiPro-Black";
+	font-size: 11px;
+	overflow: hidden;
 
 	&__label {
 		color: black;
-		font-weight: bold;
 		position: absolute;
-		font-size: 11px;
-		line-height: 21px;
-		padding-left: 4px;
+		line-height: 17px;
+		padding-left: 10px;
+		white-space: nowrap;
+	}
+
+	&__percent {
+		position: absolute;
+		right: 0;
+		top: 0;
+		color: black;
+		padding-right: 10px;
 	}
 
 	&__value {
-		border-radius: 4px;
 		position: absolute;
 		background-color: #7657ff;
 		left: 0;
@@ -25,6 +34,9 @@
 		height: 100%;
 		overflow: hidden; 
 		.athlete-meter__label {
+			color: white;
+		}
+		.athlete-meter__percent {
 			color: white;
 		}
 	}

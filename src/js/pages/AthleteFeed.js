@@ -23,9 +23,9 @@ class AthleteFeed extends Page {
 		function updateFeedBadge() {
 			const numNew = data.feed.entries.filter(e => !data.user.feed.entries[e.id]).length;
 			if (numNew > 0) {
-				$(".navbar-link-athlete-feed .badge").show();
+				$(".navbar-link-athlete-feed .navbar-icon").addClass("navbar-icon--updates");
 			} else {
-				$(".navbar-link-athlete-feed .badge").hide();
+				$(".navbar-link-athlete-feed .navbar-icon").removeClass("navbar-icon--updates");
 			}
 
 		}
@@ -34,6 +34,7 @@ class AthleteFeed extends Page {
 
 	load(container, query) {
 		this._container = container;
+		$(".navbar-link-athlete-feed .navbar-icon").addClass("navbar-icon--active");
 
 		this.loadInitialEntries(this.addEntries.bind(this));
 
@@ -58,7 +59,7 @@ class AthleteFeed extends Page {
 			data.user.feed.entries[entry.id] = true;
 			this._latestEntry = entry.id;
 			if (entry.type in feedTemplates) {
-				entry.target = data.athletes.find(a => a.id === entry.athlete);
+				entry.target = data.athletes.filter(a => a.id === entry.athlete)[0];
 				entry.data.author = entry.data.author || entry.target.name;
 				feedContainer.prepend(
 					feedTemplates[entry.type](entry)

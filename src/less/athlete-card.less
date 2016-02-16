@@ -8,7 +8,7 @@
 	height: 90%;
 	padding: 18px;
 	transition: transform 0.2s, opacity 0.3s;
-	opacity: 0;
+	opacity: 1;
 
 	&--active {
 		opacity: 1;
@@ -29,13 +29,22 @@
 		width: 100%;
 	}
 	&__name {
-		font-size: 14px;
+		font-family: "AmsiProCond-Black";
+		font-size: 18px;
 		margin-bottom: 0;
-		margin-top: 5px;
+		margin-top: -1px;
 	}
 	&__role {
-		font-size: 12px;
+		font-family: "AmsiProCond-BlackItalic";
+		font-size: 16px;
 		margin-bottom: 10px;
 		margin-top: 0;
+		color: #aaa;
+		font-weight: normal;
+	}
+	.athlete-meter {
+		@media (max-width: 320px) {
+			display: none;
+		}
 	}
 }

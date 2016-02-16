@@ -24,26 +24,28 @@
 	background-color: white;
 	border: 1px solid black;
 	color: black;
-	font-weight: bold;
 	font-size: 10px;
+	font-family: "AmsiPro-Black";
 	text-transform: uppercase;
 	border-radius: 3px;
 	margin-bottom: 10px;
 	margin-right: 10px;
+	padding: 0 16px;
 }
 
 .athlete-feed-logo {
 	display: inline-block;
 	position: relative;
+	background-size: 100%;
 	&--dr1 {
-		width: 53px;
-		height: 13px;
+		width: 51px;
+		height: 12px;
 		background-image: url("../img/logo-dr1.png");
 		top: 2px;
 	}
 	&--p3 {
-		width: 60px;
-		height: 13px;
+		width: 58px;
+		height: 12px;
 		background-image: url("../img/logo-p3.png");
 		top: 2px;
 	}
@@ -71,13 +73,15 @@
 			line-height: 30px;
 		}
 		b {
+			font-family: "AmsiProCond-Black";
 			color: @link-color;
 			margin-left: 6px;
 		}
 		i {
+			font-family: "AmsiProCond-BlackItalic";
+
 			margin-left: 3px;
-			font-weight: bold;
-			color: #888;
+			color: #aaa;
 			text-transform: lowercase;
 		}
 	}
@@ -85,6 +89,8 @@
 	&__content {
 		position: relative;
 		margin-top: 10px;
+		font-family: "AmsiProCond-Black";
+		font-size: 17px;
 		.rounded-card-box();
 		.speech-bubble-upper-left();
 
@@ -94,6 +100,7 @@
 			.button {
 				float: right;
 				display: block;
+				font-family: "AmsiPro-Black";
 				font-size: 10px;
 				text-transform: uppercase;
 				font-weight: bold;
@@ -124,8 +131,8 @@
 		padding-bottom: 0;
 		> span {
 			display: inline-block;
-			font-size: 12px;
-			font-weight: bold;
+			font-size: 11px;
+			font-family: "AmsiPro-Black";
 		}
 		.athlete-profile-social-label {
 			display: inline-block;
@@ -149,17 +156,20 @@
 
 	&__time {
 		position: absolute;
-		top: 12px;
-		right: 12px;
-		font-size: 10px;
+		top: 15px;
+		right: 15px;
+		font-size: 11px;
+		font-family: "AmsiPro-SemiBold";
 		color: #888;
 		&--live {
+			font-family: "AmsiPro-Black";
 			color: red;
 			border: 1px solid red;
 			padding-left: 4px;
 			padding-right: 4px;
 			text-transform: uppercase;
-			font-weight: bold;
+			line-height: 11px;
+			padding-bottom: 3px;
 		}
 	}
 
@@ -171,7 +181,14 @@
 			}
 			p {
 				font-size: 120%;
-				font-weight: bold;
+			}
+		}
+	}
+
+	&--event {
+		.athlete-feed-entry__content {
+			p {
+				font-size: 120%;
 			}
 		}
 	}
@@ -232,6 +249,12 @@
 			color: @color-twitter;
 			border-color: transparent;
 		}
+		.athlete-feed-entry__content {
+			p {
+				font-size: 120%;
+			}
+		}
+
 	}
 
 	&--facebook {

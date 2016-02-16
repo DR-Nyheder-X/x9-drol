@@ -2,22 +2,55 @@
 .card-queue {
 	.athlete-card {
 		transform: scale(0.97) translate(0, 12px);
-		&.active {
-			opacity: 0.7;
-		}
+		opacity: 0.8;
 	}
 }
 
 .card-queue,
 .card-container {
 	width: 350px;
-	height: 77%;
+	height: 80%;
 	margin-left: 12px;
 	margin-top: 12px;
 	position: absolute;
+	@media (max-width: 320px) {
+		width: 300px;
+	}
 }
 
 .athlete-swiper {
+
+	&__done {
+		width: 75%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 30%;
+		h1 {
+			font-family: "AmsiProCond-Black";
+			text-align: center;
+		}
+		p {
+			font-family: "AmsiPro-SemiBold";
+			text-align: center;
+		}
+		.button {
+			display: inline-block;
+			background-color: @button-color;
+			color: white;
+			text-transform: uppercase;
+			font-family: "AmsiProCond-Black";
+			border-color: transparent;
+			padding-left: 30px;
+			padding-right: 30px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-size: 16px;
+			line-height: 6px;
+			margin-top: 10px;
+		}
+		display: none;
+	}
+
 	&__controls {
 		position: absolute;
 		bottom: 14%;
@@ -44,10 +77,11 @@
 	&__counter {
 		text-align: center;
 		position: absolute;
-		top: 81%;
+		font-family: "AmsiPro-SemiBold";
+		top: 82%;
 		width: 100%;
-		color: #888;
-		font-size: 12px;
+		color: #aaa;
+		font-size: 13px;
 	}
 
 

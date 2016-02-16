@@ -63,6 +63,7 @@ class AthleteSwiper extends Page {
 	}
 
 	load(container, query) {
+		$(".navbar-link-athlete-swiper .navbar-icon").addClass("navbar-icon--active");
 		this._container = container;
 		this.loadData();
 		this.setupEvents();
@@ -86,15 +87,16 @@ class AthleteSwiper extends Page {
 	}
 
 	updateCounter() {
-		$(".athlete_swiper__counter", this._container).html(this._queue.length + " atlet" + (this._queue.length !== 1 ? "er" : "") + " tilbage");
+		$(".athlete-swiper__counter", this._container).html(this._queue.length + " atlet" + (this._queue.length !== 1 ? "er" : "") + " tilbage");
 	}
 
 	showNext() {
 		if (this._queue.length === 0) {
 			$(".card-container", this._container).hide();
 			$(".card-queue", this._container).hide();
-			$(".card-controls", this._container).hide();
-			$(".athlete_swiper__counter", this._container).hide();
+			$(".athlete-swiper__counter", this._container).hide();
+			$(".athlete-swiper__controls", this._container).hide();
+			$(".athlete-swiper__done", this._container).show();
 			return;
 		}
 		this.updateCounter();
