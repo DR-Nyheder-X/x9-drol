@@ -15,8 +15,29 @@
 	<h3 class="role">{{role}}, {{age}} år</h3>
 
 	<div class="athlete-profile-block">
-		<div class="description">{{description}}</div>
+		<div class="description">{{{formatSocialContent description}}}</div>
 	</div>
+
+	{{#if calories}}
+		<div class="athlete-profile-block">
+			<div class="description description--calories">{{{formatSocialContent calories}}}</div>
+			<h4 class="athlete-profile-social-label">Forbrænding</h4>
+		</div>
+	{{/if}}
+
+	{{#if trophies}}
+		<div class="athlete-profile-block">
+			<div class="description description--trophies">{{{formatSocialContent trophies}}}</div>
+			<h4 class="athlete-profile-social-label">Pokalskab</h4>
+		</div>
+	{{/if}}
+
+	<div class="athlete-profile-block">
+		<div class="map">
+			<img src="/images/profiles/maps/{{id}}.png">
+		</div>
+	</div>
+
 
 	<div class="athlete-profile-block">
 		<div class="swiper-container athlete-instagram athlete-profile-swiper">
