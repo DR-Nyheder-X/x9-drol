@@ -2,7 +2,7 @@
 
 .athlete-card {
 	.rounded-card-box();
-	position: absolute;
+	position: relative;
 	left: 0;
 	width: 100%;
 	height: 90%;
@@ -25,9 +25,9 @@
 
 	&__portrait {
 		border-radius: 4px;
-
 		width: 100%;
 	}
+
 	&__name {
 		font-family: "AmsiProCond-Black";
 		font-size: 18px;
@@ -37,13 +37,19 @@
 	&__role {
 		font-family: "AmsiProCond-BlackItalic";
 		font-size: 16px;
-		margin-bottom: 10px;
+		margin-bottom: 5px;
+		@media (max-width: 320px) {
+			margin-bottom: 3px;
+		}
 		margin-top: 0;
 		color: #aaa;
 		font-weight: normal;
 	}
 	.athlete-meter {
 		@media (max-width: 320px) {
+			margin-bottom: 2px;
+		}
+		@media (max-height: 460px) {
 			display: none;
 		}
 	}

@@ -1,4 +1,4 @@
-<div class="list-block contacts-block">
+<div class="list-block contacts-block athlete-list">
 	{{#each .}}
 		<div class="list-group">
 			<ul>
@@ -8,7 +8,8 @@
 						<div class="item-content">
 							<div class="item-inner">
 								<div class="item-title">
-									<a href="/pages/athlete-profile.html?id={{id}}">{{name}}</a>
+									<a href="pages/athlete-profile.html?id={{id}}">{{name}}</a>
+									<div class="toggle-button {{#if following}} toggle-button--yes {{else}} toggle-button--no {{/if}}" data-athlete="{{id}}"></div>
 								</div>
 							</div>
 						</div>

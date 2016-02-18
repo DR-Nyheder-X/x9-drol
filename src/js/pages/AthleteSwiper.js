@@ -6,8 +6,11 @@ const $ = Dom7;
 
 class AthleteSwiper extends Page {
 
-	loadData() {
-		this._queue = data.athletes.slice();
+	constructor(app, view) {
+		super(app, view);
+		app.onPageBeforeAnimation("athlete-swiper", () => {
+			this.refresh();
+		});
 	}
 
 	setupEvents() {
@@ -58,19 +61,20 @@ class AthleteSwiper extends Page {
 
 	showProfile() {
 		this._view.router.loadPage({
-			url: "/pages/athlete-profile.html?id=" + this._currentAthlete.id
+			url: "pages/athlete-profile.html?id=" + this._currentAthlete.id
 		});
 	}
 
 	load(container, query) {
 		$(".navbar-link-athlete-swiper .navbar-icon").addClass("navbar-icon--active");
 		this._container = container;
-		this.loadData();
 		this.setupEvents();
 		this.showNext();
 	}
 
 	acceptCurrent() {
+		data.user.queue.shift();
+		data.user.following[this._currentAthlete.id] = true;
 		$(".card-container .athlete-card", this._container).transform("");
 		$(".card-container .athlete-card", this._container).addClass("athlete-card--swipe-right");
 		setTimeout(() => {
@@ -79,6 +83,7 @@ class AthleteSwiper extends Page {
 	}
 
 	rejectCurrent() {
+		data.user.queue.shift();
 		$(".card-container .athlete-card", this._container).transform("");
 		$(".card-container .athlete-card", this._container).addClass("athlete-card--swipe-left");
 		setTimeout(() => {
@@ -87,11 +92,11 @@ class AthleteSwiper extends Page {
 	}
 
 	updateCounter() {
-		$(".athlete-swiper__counter", this._container).html(this._queue.length + " atlet" + (this._queue.length !== 1 ? "er" : "") + " tilbage");
+		$(".athlete-swiper__counter", this._container).html(data.user.queue.length + " atlet" + (data.user.queue.length !== 1 ? "er" : "") + " tilbage");
 	}
 
 	showNext() {
-		if (this._queue.length === 0) {
+		if (data.user.queue.length === 0) {
 			$(".card-container", this._container).hide();
 			$(".card-queue", this._container).hide();
 			$(".athlete-swiper__counter", this._container).hide();
@@ -101,7 +106,12 @@ class AthleteSwiper extends Page {
 		}
 		this.updateCounter();
 		const cardTemplate = require("../../hbs/partials/athleteCard.hbs");
-		const athlete = this._queue.shift();
+		const athlete = data.user.queue[0];
+		if (data.user.following[athlete.id]) {
+			data.user.queue.shift();
+			this.showNext();
+			return;
+		}
 		this._currentAthlete = athlete;
 		$(".card-container", this._container).html(
 			cardTemplate(athlete)
@@ -110,8 +120,8 @@ class AthleteSwiper extends Page {
 			$(".athlete-card", this._container).addClass("athlete-card--active");
 		},1);
 
-		if (this._queue.length > 0) {
-			const nextAthlete = this._queue[0];
+		if (data.user.queue.length > 1) {
+			const nextAthlete = data.user.queue[1];
 			$(".card-queue", this._container).html(
 				cardTemplate(nextAthlete)
 			);
@@ -119,6 +129,13 @@ class AthleteSwiper extends Page {
 			$(".card-queue", this._container).hide();
 		}
 		
+	}
+
+	refresh() {
+		if (this._currentAthlete && data.user.following[this._currentAthlete.id]) {
+			data.user.queue.shift();
+			this.showNext();
+		}
 	}
 
 }

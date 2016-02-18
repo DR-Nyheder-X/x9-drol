@@ -26,8 +26,8 @@ a {
 }
 
 .toolbar {
-	height: 70px;
-	background-color: #efefef;
+	height: 61px;
+	background-color: white;
 }
 
 .loading-screen-preloader {
@@ -40,6 +40,18 @@ a {
 	margin-top: -21px;
 }
 
+.toggle-button {
+	width: 53px;
+	height: 20px;
+	background-size: 100%;
+	&--yes {
+		background-image: url("../img/toggle-ja.png");
+	}
+	&--no {
+		background-image: url("../img/toggle-nej.png");
+	}
+}
+
 @import "navbar.less";
 @import "intro.less";
 
@@ -47,3 +59,4 @@ a {
 @import "athlete-swiper.less";
 @import "athlete-profile.less";
 @import "athlete-feed.less";
+@import "athlete-list.less";

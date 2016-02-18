@@ -6,9 +6,11 @@ const DATA_URL_FEED = "https://spreadsheets.google.com/feeds/list/1Z0G_Cf7zbRkeS
 const data = {
 	init: getData,
 	user: {
+		queue: [],
 		feed: {
 			entries: {}
-		}
+		},
+		following: {}
 	}
 };
 
@@ -66,8 +68,8 @@ function getAthleteData(callback) {
 				}
 			};
 			return athlete;
-
 		});
+		data.user.queue = data.athletes.slice();
 		callback();
 	});
 }

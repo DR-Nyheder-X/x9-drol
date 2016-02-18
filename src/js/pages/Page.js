@@ -1,6 +1,6 @@
-/* global Dom7 */
+/* global */
 
-class AthleteList {
+class Page {
 	constructor(app, view) {
 		this._app = app;
 		this._view = view;
@@ -9,6 +9,10 @@ class AthleteList {
 	load(container, query) {
 	}
 
+	refresh() {
+
+	}
+
 }
 
-module.exports = AthleteList;
+module.exports = Page;

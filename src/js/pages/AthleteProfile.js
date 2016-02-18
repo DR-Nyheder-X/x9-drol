@@ -1,4 +1,4 @@
-/* global Dom7 twttr FB */
+/* global Dom7 */
 
 const data = require("../data.js");
 const Page = require("./Page.js");
@@ -20,7 +20,21 @@ class AthleteProfile extends Page {
 			profileTemplate(this._athlete)
 		);
 
-		$(".athlete-profile-controls-name", this._container).html(this._athlete.firstName);
+		$(".athlete-profile-controls .toggle-button", this._container).addClass(
+			data.user.following[this._athlete.id] ? "toggle-button--yes" : "toggle-button--no"
+		);
+
+		$(".athlete-profile-controls .toggle-button", this._container).on("click", () => {
+			data.user.following[this._athlete.id] = !data.user.following[this._athlete.id];
+			if (data.user.following[this._athlete.id]) {
+				$(".athlete-profile-controls .toggle-button", this._container).removeClass("toggle-button--no").addClass("toggle-button--yes");
+			} else {
+				$(".athlete-profile-controls .toggle-button", this._container).removeClass("toggle-button--yes").addClass("toggle-button--no");
+			}
+		});
+
+
+		$(".athlete-profile-controls__name", this._container).html(this._athlete.firstName);
 
 		this._app.swiper($(".athlete-gallery", this._container), {
 			pagination: $(".athlete-gallery .swiper-pagination", this._container),

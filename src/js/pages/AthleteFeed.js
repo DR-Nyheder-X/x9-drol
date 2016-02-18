@@ -21,7 +21,7 @@ class AthleteFeed extends Page {
 		this._latestEntry = -1;
 
 		function updateFeedBadge() {
-			const numNew = data.feed.entries.filter(e => !data.user.feed.entries[e.id]).length;
+			const numNew = data.feed.entries.filter(e => !data.user.feed.entries[e.id] && data.user.following[e.athlete]).length;
 			if (numNew > 0) {
 				$(".navbar-link-athlete-feed .navbar-icon").addClass("navbar-icon--updates");
 			} else {
@@ -55,11 +55,15 @@ class AthleteFeed extends Page {
 		const feedContainer = $(".feed-container", this._container);
 
 		entries.forEach(entry => {
+			const athlete = data.athletes.filter(a => a.id === entry.athlete)[0];
+			if (!data.user.following[athlete.id]) {
+				return;
+			}
 			entry.unread = !data.user.feed.entries[entry.id];
 			data.user.feed.entries[entry.id] = true;
 			this._latestEntry = entry.id;
 			if (entry.type in feedTemplates) {
-				entry.target = data.athletes.filter(a => a.id === entry.athlete)[0];
+				entry.target = athlete;
 				entry.data.author = entry.data.author || entry.target.name;
 				feedContainer.prepend(
 					feedTemplates[entry.type](entry)

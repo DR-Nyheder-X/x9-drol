@@ -34,24 +34,24 @@ data.init(() => {
 	});
 
 	$(".list-panel-athlete-list").on("click", e => {
-		mainView.router.loadPage("/pages/athlete-list.html");
+		mainView.router.loadPage("pages/athlete-list.html");
 	});
 
 	$(".navbar-link-athlete-feed").on("click", e => {
-		mainView.router.loadPage("/pages/athlete-feed.html");
+		mainView.router.loadPage("pages/athlete-feed.html");
 	});
 
 	$(".navbar-link-athlete-swiper").on("click", e => {
-		mainView.router.loadPage("/pages/athlete-swiper.html");
+		mainView.router.loadPage("pages/athlete-swiper.html");
 	});
 
-	// intro.init(app, () => {
+	intro.init(app, () => {
 		$(".navbar").show();
 		mainView.router.loadPage({
-			url: "/pages/athlete-swiper.html",
+			url: "pages/athlete-swiper.html",
 			animatePages: false,
 			reload: true
 		});
-	// });
+	});
 });
 
